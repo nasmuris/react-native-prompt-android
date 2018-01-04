@@ -8,5 +8,10 @@ export default function prompt(
     callbackOrButtons?: ?((text: string) => void) | Object,
     options?: Object
 ): void {
-    AlertIOS.prompt(title, message, callbackOrButtons, options.type, options.defaultValue);
+  var keyboardType='default'
+  if(options.type=='numeric'){
+    options.type='plain-text';
+    keyboardType='numeric';
+  }
+    AlertIOS.prompt(title, message, callbackOrButtons, options.type, options.defaultValue,keyboardType);
 };
